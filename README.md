@@ -165,6 +165,7 @@ conda create -n cv python=3.10
 ## 5. 安装cuda
 
 ```shell
+conda activate cv # 激活环境
 ./zsh-cuda-install.sh
 ```
 
