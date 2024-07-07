@@ -1,3 +1,9 @@
+# Installation
+```shell
+git clone https://github.com/Helium-327/AwesomeTools-wsl4AI.git
+cd AwesomeTools-wsl4AI
+chmod +x ./zsh*.sh
+```
 # 自动配置`zsh`和`wsl`环境
 
 ## 1. 更换系统标识
