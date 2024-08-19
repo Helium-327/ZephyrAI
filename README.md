@@ -25,13 +25,6 @@ source ~/.zshrc
 ./zsh-start.sh
 ```
 
-
-```shell
-curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o chsrc; chmod +x ./chsrc
-sudo ./chsrc set ubuntu
-```
-
-
 ## 3. 配置zsh插件
 
 ```shell
