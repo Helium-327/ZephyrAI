@@ -44,7 +44,7 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
     echo "oh-my-zsh 已经安装。"
 else
     echo "正在安装 oh-my-zsh ..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(wget -O- https://gitee.com/pocmon/ohmyzsh/raw/master/tools/install.sh)"
 fi
 
 

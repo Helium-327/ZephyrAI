@@ -2,8 +2,6 @@
 
 ---
 
-
-
 # Installation
 
 ```shell
@@ -11,7 +9,8 @@ git clone https://github.com/Helium-327/AwesomeTools-wsl4AI.git
 cd AwesomeTools-wsl4AI
 chmod +x ./zsh*.sh
 ```
-# 自动配置`zsh`和`wsl`环境
+
+# 自动配置 `zsh`和 `wsl`环境
 
 ## 1. 更换系统标识
 
@@ -87,57 +86,6 @@ fi
 source ~/.zshrc
 ```
 
-`zsh-plugin-install.sh`脚本的内容：
-
-```sh
-#! /bin/bash
-
-
-: <<'EOF'
-这是一个安装zsh插件的脚本,主要包含以下内容：
-
-EOF
-
-#-----------------------------------安装插件----------------------------------------------------
-echo "准备安装zsh的插件......"
-# 安装 zsh-autosuggestions 插件
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
-    echo "正在安装 zsh-autosuggestions 插件 ..."
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-fi
-
-# 安装 zsh-completions 插件
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
-    echo "正在安装 zsh-completions 插件 ..."
-    git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-fi
-
-
-# 安装 zsh-syntax-highlighting 插件
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-    echo "正在安装 zsh-syntax-highlighting 插件 ..."
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-fi
-echo "---zsh插件配置完成!---"
-
-# --------------------------------配置 zsh-------------------------------------------------------
-echo "正在配置 zsh ..."
-
-# 启用插件
-PLUGINS=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
-SOURCE_LINE="source \$ZSH/oh-my-zsh.sh"
-echo "plugins=(${PLUGINS[*]})" >> ~/.zshrc
-echo "$SOURCE_LINE" >> ~/.zshrc
-
-echo "插件已添加到.zshrc文件！"
-
-# 应用配置
-echo "请重新启动终端或使用 'source ~/.zshrc' 来应用更改。"
-
-# 脚本结束
-exit 0
-```
-
 ## 4. 安装miniconda
 
 ```shell
@@ -145,62 +93,7 @@ exit 0
 source /root/miniconda3/bin/activate
 ```
 
-`zsh-conda-install.sh`脚本内容：
-
-```sh
-#! /bin/bash
-
-
-: <<'EOF'
-这是一个配置 Miniconda的脚本,主要包含以下内容：
-
-
-EOF
-# ------------------------配置 Miniconda----------------------------
-echo "正在下载Miniconda安装程序..."
-mkdir -p ~/software
-wget -P ~/software/ https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
-chmod +x ~/software/Miniconda3-latest-Linux-x86_64.sh
-zsh ~/software/Miniconda3-latest-Linux-x86_64.sh
-# rm ~/software/Miniconda3-latest-Linux-x86_64.sh
-
-source /root/miniconda3/bin/activate # 如果一直回车确认，就默认在root用户下安装
-echo "---intall miniconda done!---"
-
-# ------------------------配置 conda----------------------------
-./chsrc set conda
-echo "创建conda环境..."
-conda create -n cv python=3.10
-```
-
-
-
-## 5. 安装cuda
-
 ```shell
 conda activate cv # 激活环境
 ./zsh-cuda-install.sh
 ```
-
-`zsh-cuda-install.sh` 脚本内容：
-
-```sh
-#! /bin/bash
-
-
-: <<'EOF'
-这是一个配置 pytorch的脚本,主要包含以下内容：
-
-
-EOF
-
-# ------------------------配置 pytorch----------------------------
-
-# # conda
-# conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
-
-# pip(推荐)
-./chsrc set pip
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-```
-
