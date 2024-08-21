@@ -22,3 +22,5 @@ echo "创建conda环境..."
 conda create -n cv python=3.10
 
 
+
+
